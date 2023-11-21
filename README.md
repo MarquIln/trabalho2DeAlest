@@ -1,4 +1,4 @@
 # trabalho2DeAlest
 TRABALHO EM TRIO
 
-:check: Parte 1
+- [x] Parte 1
