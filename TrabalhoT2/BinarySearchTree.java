@@ -321,23 +321,36 @@ class BinarySearchTree {
      * @return valor inteiro correspondente a quantidade de nodos folha
      */
     public int countBetween(int start, int end) {
-        int count = 0;
         Node current = root;
-        if (current.element == start) {
-            while (current.element != end) {
-                count += current.element;
+        int sum = 0;
+
+        if (root == null)
+            return 0;
+        while (current.element != start) {
+            if (start < current.element)
+                current = current.left;
+            else
                 current = current.right;
-            }
-        } else {
-            while (current.element != start) {
-                current = current.right;
-            }
-            while (current.element != end) {
-                count += current.element;
-                current = current.right;
-            }
+            if (current == null)
+                return 0;
         }
-        return count;
+        
+        if (start > end) {
+            current = current.left;
+        } else {
+            current = current.right;
+        }
+
+        while (current.element != end) {
+            sum += current.element;
+            if (end < current.element)
+                current = current.left;
+            else
+                current = current.right;
+            if (current == null)
+                return 0;
+        }
+        return sum;
     }
 
 }
