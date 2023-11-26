@@ -5,7 +5,7 @@
 
 class BinarySearchTree {
 
-    private Node root;
+    public Node root;
 
     public BinarySearchTree() {
         root = null;
@@ -234,11 +234,11 @@ class BinarySearchTree {
     public void treeInfo() {
         System.out.println("Altura da arvore: " + height(root));
         System.out.println("Quantidade de Nós: " + countNodes(root));
-        //if (root != null) {
-            // System.out.println("Valor minimo: " + minNode());
-            // System.out.println("Valor maximo: " + maxNode());
-        // }
-        // System.out.println("Quantidade de folhas: " + leaveNodes(root));
+        if (root != null) {
+            System.out.println("Valor minimo: " + minNode());
+            System.out.println("Valor maximo: " + maxNode());
+        }
+        System.out.println("Quantidade de folhas: " + countLeaves(root));
     }
 
     public void printTree() {
@@ -257,15 +257,15 @@ class BinarySearchTree {
      * @param defina a necessidade de parâmetros de acordo com a sua implementação
      * @return valor do menor nodo da árvore
      */
-    public int minNode(Node current) {
+    public int minNode() {
+        Node current = root;
         if (current == null) {
             return 0;
         } else {
-            if (current.left == null) {
-                return current.element;
-            } else {
-                return minNode(current.left);
+            while (current.left != null) {
+                current = current.left;
             }
+            return current.element;
         }
     }
 
@@ -275,15 +275,15 @@ class BinarySearchTree {
      * @param defina a necessidade de parâmetros de acordo com a sua implementação
      * @return valor do maior nodo da árvore
      */
-    public int maxNode(Node current) {
+    public int maxNode() {
+        Node current = root;
         if (current == null) {
             return 0;
         } else {
-            if (current.right == null) {
-                return current.element;
-            } else {
-                return maxNode(current.right);
+            while (current.right != null) {
+                current = current.right;
             }
+            return current.element;
         }
     }
 
