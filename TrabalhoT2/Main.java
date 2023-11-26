@@ -30,6 +30,9 @@ public class Main {
         System.out.println();
         System.out.println();
         int countBetween = tree.countBetween(5, 1);
-        System.out.println("Soma dos nós entre 10 e 15: " + countBetween);
+        System.out.println("Soma dos nós entre 5 e 1: " + countBetween);
+
+        System.out.println();
+        tree.preOrder(tree.getRoot());
     }
 }
