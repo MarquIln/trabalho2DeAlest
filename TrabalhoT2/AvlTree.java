@@ -3,8 +3,115 @@ public class AvlTree extends BinarySearchTree {
         super();
     }
 
+    public Node getRoot(){
+        return root;
+    }
+
+    public void add(Integer element){ // O(n)
+        Node prev, current;
+        Node node = new Node();
+        node.element = element;
+        node.right = null;
+        node.left = null;
+        if (root == null) {
+            root = node;
+        } else {
+            current = root;
+            while(true) {
+                prev = current;
+                if (element <= current.element) {
+                    current = current.left;
+                    if (current == null) {
+                        prev.left = node;
+                        return;
+                    }
+                }
+                else {
+                    current = current.right;
+                    if (current == null) {
+                        prev.right = node;
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    public int getParent(Integer element){ // O(n)
+        Node current = root;
+        Node prev = null;
+        while (current != null) {
+            if (current.element == element) {
+                return prev.element;
+            }
+            prev = current;
+            if (element <= current.element) {
+                current = current.left;
+            }
+            else {
+                current = current.right;
+            }
+        }
+        return -1;
+    }
+
+    public boolean contains(Node node){ // O(n)
+        Node current = root;
+        while (current != null) {
+            if (current.element == node.element) {
+                return true;
+            }
+            if (node.element <= current.element) {
+                current = current.left;
+            }
+            else {
+                current = current.right;
+            }
+        }
+        return false;
+    }
+
+    public int height(){
+        Node current = root;
+        int heightLeft = 0;
+        int heightRight = 0;
+        while(current != null){
+            if(current.element != null){
+                current = current.left;
+                heightLeft++;
+            }else if(current.element != null){
+                current = current.right;
+                heightRight++;
+            }else{
+                break;
+            }
+        }
+        return heightLeft > heightRight ? heightLeft : heightRight;
+    }
+
+    public void clear(){
+        root = null;
+    }
+
     public void balanceTree() {
         root = balance(root);
+    }
+
+    public int size(){
+        Node current = root;
+        int sizeArvore = 0;
+        while(current != null){
+            if(current.left != null){
+                sizeArvore++;
+                current = current.left;
+            } else if(current.right != null){
+                    sizeArvore++;
+                    current = current.right;
+                    }else {
+                     break;
+                }
+        }
+        return sizeArvore;
     }
 
     private Node balance(Node node) {

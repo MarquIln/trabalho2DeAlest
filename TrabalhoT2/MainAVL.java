@@ -47,5 +47,7 @@ public class MainAVL {
         System.out.println();
         tree.balanceTree();
         tree.printTree();
+        System.out.println(tree.size());
+        System.out.println(tree.height());
     }
 }
