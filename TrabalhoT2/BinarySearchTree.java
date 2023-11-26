@@ -12,39 +12,27 @@ class BinarySearchTree {
     }
 
     public void add(Integer v) {
-
         Node prev, current;
-
-        // cria um novo nodo
         Node node = new Node();
-
-        // atribui o valor recebido ao item de dados do nodo
         node.element = v;
         node.right = null;
         node.left = null;
-
-        // se a raiz está nula, a árvore está vazia
         if (root == null) {
             root = node;
         } else {
             current = root;
-            // percorre a árvore
             while(true) {
                 prev = current;
-                // ir para esquerda
                 if (v <= current.element) {
                     current = current.left;
                     if (current == null) {
-                        // insere na subárvore da esquerda
                         prev.left = node;
                         return;
                     }
                 }
-                // ir para direita
                 else {
                     current = current.right;
                     if (current == null) {
-                        // insere na subárvore da direita
                         prev.right = node;
                         return;
                     }
@@ -269,14 +257,17 @@ class BinarySearchTree {
      * @param defina a necessidade de parâmetros de acordo com a sua implementação
      * @return valor do menor nodo da árvore
      */
-    public int minNode() {
-        Node current = root;
-        while (current.left != null) {
-            current = current.left;
+    public int minNode(Node current) {
+        if (current == null) {
+            return 0;
+        } else {
+            if (current.left == null) {
+                return current.element;
+            } else {
+                return minNode(current.left);
+            }
         }
-        return current.element;
     }
-
 
     /**
      * Método maxNode()
@@ -284,12 +275,16 @@ class BinarySearchTree {
      * @param defina a necessidade de parâmetros de acordo com a sua implementação
      * @return valor do maior nodo da árvore
      */
-    public int maxNode() {
-        Node current = root;
-        while (current.right != null) {
-            current = current.right;
+    public int maxNode(Node current) {
+        if (current == null) {
+            return 0;
+        } else {
+            if (current.right == null) {
+                return current.element;
+            } else {
+                return maxNode(current.right);
+            }
         }
-        return current.element;
     }
 
 
