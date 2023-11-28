@@ -1,7 +1,8 @@
-public class AvlTree extends BinarySearchTree {
+public class AvlTree {
+    private Node root;
 
     public AvlTree(){
-        super();
+        root = null;
     }
 
     public Node getRoot(){
@@ -88,10 +89,6 @@ public class AvlTree extends BinarySearchTree {
             }
         }
         return heightLeft > heightRight ? heightLeft : heightRight;
-    }
-
-    public void clear(){
-        root = null;
     }
 
     public int size(Node current) {
@@ -186,9 +183,50 @@ public class AvlTree extends BinarySearchTree {
         return n2;
     }
 
+    public void inOrder(Node current) {
+        if (current != null) {
+            inOrder(current.left);
+            System.out.print(current.element + " ");
+            inOrder(current.right);
+        }
+    }
+
+    public void preOrder(Node current) {
+        if (current != null) {
+            System.out.print(current.element + " ");
+            preOrder(current.left);
+            preOrder(current.right);
+        }
+    }
+
+    public void posOrder(Node current) {
+        if (current != null) {
+            posOrder(current.left);
+            posOrder(current.right);
+            System.out.print(current.element + " ");
+        }
+    }
+
+    public void printTree() {
+        if(root != null) {
+            TreeFormatter formatter = new TreeFormatter();
+            System.out.println(formatter.topDown(root));
+        } else {
+            System.out.println("Arvore vazia!");
+        }
+    }
+
     public void treeInfo() {
         System.out.println("Altura da arvore: " + height(root));
         System.out.println("Quantidade de Nós: " + size(root));
+    }
+
+    public void clear() {
+        root = null;
+    }
+
+    public boolean isEmpty() {
+        return root == null;
     }
 }
     

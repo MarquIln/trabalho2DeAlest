@@ -22,7 +22,7 @@ public class MainAVL {
         
         System.out.println();
 
-        tree.clearTree();
+        tree.clear();
         tree.printTree();
         System.out.println();
         System.out.println("Enchendo a arvore novamente...");
