@@ -3,4 +3,4 @@ TRABALHO EM TRIO
 
 - [x] Parte 1
 - [x] Parte 2
-- [ ] Relatorio
+- [x] Relatorio (FALTA A PARTE DA EXPLICACAO DA ARVORE AVL)
