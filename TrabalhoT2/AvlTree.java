@@ -93,7 +93,14 @@ public class AvlTree extends BinarySearchTree {
         root = null;
     }
 
-    public void balanceTree() {
+    public int size(Node current){
+        if (root == null) {
+            return 0;
+        }
+        return (1 + countNodes(current.left) + countNodes(current.right));
+    }
+
+        public void balanceTree() {
         root = balanceTree(root);
     }
     
@@ -104,23 +111,6 @@ public class AvlTree extends BinarySearchTree {
         node.left = balanceTree(node.left);
         node.right = balanceTree(node.right);
         return balance(node);
-    }
-
-    public int size(){
-        Node current = root;
-        int sizeArvore = 0;
-        while(current != null){
-            if(current.left != null){
-                sizeArvore++;
-                current = current.left;
-            } else if(current.right != null){
-                sizeArvore++;
-                current = current.right;
-            } else {
-                break;
-            }
-        }
-        return sizeArvore;
     }
 
     private Node balance(Node node) {
@@ -149,17 +139,17 @@ public class AvlTree extends BinarySearchTree {
         return node;
     }
 
-    private void updateHeight(Node node) {
-        if (node != null) {
-            node.height = 1 + Math.max(height(node.left), height(node.right));
-        }
-    }
-
     private int getBalance(Node node) {
         if (node == null) {
             return 0;
         }
         return height(node.left) - height(node.right);
+    }
+
+    private void updateHeight(Node node) {
+        if (node != null) {
+            node.height = 1 + Math.max(height(node.left), height(node.right));
+        }
     }
 
     private Node rotateRight(Node n1) {
@@ -180,6 +170,11 @@ public class AvlTree extends BinarySearchTree {
         updateHeight(n1);
         updateHeight(n2);
         return n2;
+    }
+
+    public void treeInfo() {
+        System.out.println("Altura da arvore: " + height(root));
+        System.out.println("Quantidade de Nós: " + size(root));
     }
 }
     

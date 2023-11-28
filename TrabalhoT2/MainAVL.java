@@ -55,9 +55,7 @@ public class MainAVL {
         tree.balanceTree();
         tree.printTree();
         System.out.println();
-        System.out.print("Tamanho da arvore: ");
-        System.out.println(tree.size());
-        System.out.print("Altura da arvore: ");
-        System.out.println(tree.height());
+        System.out.println();
+        tree.treeInfo();
     }
 }
