@@ -30,5 +30,6 @@ public class MainBST {
     int end = sc.nextInt();
     System.out.println("A soma entre os elementos " + start + " e " + end + " é: ");
     System.out.println(bst.sumBetween(start, end));
+    sc.close();
   }
 }
