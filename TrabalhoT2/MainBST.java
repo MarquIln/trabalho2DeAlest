@@ -1,6 +1,9 @@
+import java.util.Scanner;
+
 public class MainBST {
   public static void main(String[] args) {
     BinarySearchTree bst = new BinarySearchTree();
+    Scanner sc = new Scanner(System.in);
 
     bst.add(10);
     bst.add(5);
@@ -21,6 +24,11 @@ public class MainBST {
     System.out.println();
     bst.treeInfo();
     System.out.println();
-    System.out.println("Soma dos elementos entre 10 e 15: " + bst.countBetween(10, 19));
+    System.out.println("Escolha 1 elemento onde a soma deve ser iniciada: ");
+    int start = sc.nextInt();
+    System.out.println("Escolha outro elemento que seja filho ou neto do anterior para finalizar a soma: ");
+    int end = sc.nextInt();
+    System.out.println("A soma entre os elementos " + start + " e " + end + " é: ");
+    System.out.println(bst.sumBetween(start, end));
   }
 }
