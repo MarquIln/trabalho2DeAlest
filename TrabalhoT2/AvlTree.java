@@ -1,4 +1,5 @@
 public class AvlTree extends BinarySearchTree {
+
     public AvlTree(){
         super();
     }
@@ -93,15 +94,28 @@ public class AvlTree extends BinarySearchTree {
         root = null;
     }
 
-    public int size(Node current){
-        if (root == null) {
+    public int size(Node current) {
+        if (current == null) {
             return 0;
         }
-        return (1 + countNodes(current.left) + countNodes(current.right));
+        return (1 + size(current.left) + size(current.right));
     }
 
         public void balanceTree() {
         root = balanceTree(root);
+    }
+
+    public int height(Node current) {
+        if (current == null || (current.left == null && current.right == null)) {
+            return 0;
+        } else {
+            if (height(current.left) > height(current.right)) {
+                return (1 + height(current.left));
+            }
+            else {
+                return (1 + height(current.right));
+            }
+        }
     }
     
     private Node balanceTree(Node node) {

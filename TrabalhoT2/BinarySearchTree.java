@@ -246,7 +246,7 @@ class BinarySearchTree {
             TreeFormatter formatter = new TreeFormatter();
             System.out.println(formatter.topDown(root));
         } else {
-            System.out.println("Árvore vazia!");
+            System.out.println("Arvore vazia!");
         }
     }
 
