@@ -94,7 +94,16 @@ public class AvlTree extends BinarySearchTree {
     }
 
     public void balanceTree() {
-        root = balance(root);
+        root = balanceTree(root);
+    }
+    
+    private Node balanceTree(Node node) {
+        if (node == null) {
+            return null;
+        }
+        node.left = balanceTree(node.left);
+        node.right = balanceTree(node.right);
+        return balance(node);
     }
 
     public int size(){
@@ -105,11 +114,11 @@ public class AvlTree extends BinarySearchTree {
                 sizeArvore++;
                 current = current.left;
             } else if(current.right != null){
-                    sizeArvore++;
-                    current = current.right;
-                    }else {
-                     break;
-                }
+                sizeArvore++;
+                current = current.right;
+            } else {
+                break;
+            }
         }
         return sizeArvore;
     }

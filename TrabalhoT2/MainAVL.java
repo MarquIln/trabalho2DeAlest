@@ -17,11 +17,15 @@ public class MainAVL {
         System.out.println();
         tree.treeInfo();
         System.out.println();
+        tree.balanceTree();
+        tree.printTree();
+        
+        System.out.println();
+
         tree.clearTree();
-        System.out.println("Arvore esvaziada:");
         tree.printTree();
         System.out.println();
-        System.out.println("Enchendo a arvore...");
+        System.out.println("Enchendo a arvore novamente...");
 
         tree.add(9);
         tree.add(8);
@@ -36,18 +40,24 @@ public class MainAVL {
         System.out.println();
         tree.treeInfo();
         System.out.println();
+        System.out.print("In Order: ");
         tree.inOrder(tree.getRoot());
         System.out.println();
         System.out.println();
+        System.out.print("Pre Order: ");
         tree.preOrder(tree.getRoot());
         System.out.println();
         System.out.println();
+        System.out.print("Pos Order: ");
         tree.posOrder(tree.getRoot());
         System.out.println();
         System.out.println();
         tree.balanceTree();
         tree.printTree();
+        System.out.println();
+        System.out.print("Tamanho da arvore: ");
         System.out.println(tree.size());
+        System.out.print("Altura da arvore: ");
         System.out.println(tree.height());
     }
 }
