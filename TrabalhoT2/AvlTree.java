@@ -73,35 +73,6 @@ public class AvlTree {
         return false;
     }
 
-    public int height(){
-        Node current = root;
-        int heightLeft = 0;
-        int heightRight = 0;
-        while(current != null){
-            if(current.element != null){
-                current = current.left;
-                heightLeft++;
-            }else if(current.element != null){
-                current = current.right;
-                heightRight++;
-            }else{
-                break;
-            }
-        }
-        return heightLeft > heightRight ? heightLeft : heightRight;
-    }
-
-    public int size(Node current) {
-        if (current == null) {
-            return 0;
-        }
-        return (1 + size(current.left) + size(current.right));
-    }
-
-        public void balanceTree() {
-        root = balanceTree(root);
-    }
-
     public int height(Node current) {
         if (current == null || (current.left == null && current.right == null)) {
             return 0;
@@ -114,7 +85,18 @@ public class AvlTree {
             }
         }
     }
-    
+
+    public int size(Node current) {
+        if (current == null) {
+            return 0;
+        }
+        return (1 + size(current.left) + size(current.right));
+    }
+
+    public void balanceTree() {
+        root = balanceTree(root);
+    }
+
     private Node balanceTree(Node node) {
         if (node == null) {
             return null;

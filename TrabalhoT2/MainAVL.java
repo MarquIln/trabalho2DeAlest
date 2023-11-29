@@ -24,6 +24,7 @@ public class MainAVL {
 
         tree.clear();
         tree.printTree();
+        System.out.println(tree.isEmpty());
         System.out.println();
         System.out.println("Enchendo a arvore novamente...");
 
